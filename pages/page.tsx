@@ -1,5 +1,5 @@
 "use client";
-import OpprettSkjema from "@/OpprettSkjema";
+import OpprettSkjema from "@/Components/OpprettSkjema";
 
 export default function OpprettSide() {
   return (
