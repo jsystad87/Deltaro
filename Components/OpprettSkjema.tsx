@@ -15,7 +15,7 @@ export default function OpprettSkjema() {
 
     try {
       const newEvent = await createEvent({
-        // owner_id fjernet – bruker default i databasen
+        owner_id: '11111111-1111-1111-1111-111111111111', // ← Erstatt med faktisk ID fra Supabase!
         title,
         description,
         location,
@@ -78,4 +78,5 @@ export default function OpprettSkjema() {
     </form>
   );
 }
+
 
