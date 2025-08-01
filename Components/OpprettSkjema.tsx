@@ -15,7 +15,7 @@ export default function OpprettSkjema() {
 
     try {
       const newEvent = await createEvent({
-        owner_id: 'demo-user-id', // ← Du kan erstatte denne seinare med ekte brukar-ID
+        // owner_id fjernet – bruker default i databasen
         title,
         description,
         location,
@@ -23,14 +23,14 @@ export default function OpprettSkjema() {
         language: 'no',
       });
 
-      setSuccessMessage(`Arrangementet "${newEvent.title}" vart oppretta!`);
+      setSuccessMessage(`Arrangementet "${newEvent.title}" ble opprettet!`);
       setErrorMessage('');
       setTitle('');
       setDescription('');
       setLocation('');
     } catch (error: any) {
       setSuccessMessage('');
-      setErrorMessage('Klarte ikkje opprette arrangementet: ' + error.message);
+      setErrorMessage('Klarte ikke opprette arrangementet: ' + error.message);
     }
   };
 
@@ -48,7 +48,7 @@ export default function OpprettSkjema() {
       </div>
 
       <div>
-        <label className="block font-semibold">Stad</label>
+        <label className="block font-semibold">Sted</label>
         <input
           type="text"
           value={location}
@@ -58,7 +58,7 @@ export default function OpprettSkjema() {
       </div>
 
       <div>
-        <label className="block font-semibold">Beskriving</label>
+        <label className="block font-semibold">Beskrivelse</label>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -78,3 +78,4 @@ export default function OpprettSkjema() {
     </form>
   );
 }
+
