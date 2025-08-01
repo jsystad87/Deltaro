@@ -2,7 +2,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import FormFieldEditor from '../../components/FormFieldEditor';
+import FormFieldEditor from '../../Components/FormFieldEditor';
 
 export default function SkjemaEditor() {
   const router = useRouter();
