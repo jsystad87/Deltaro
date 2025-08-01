@@ -1,5 +1,13 @@
-import { supabase } from './supabase';
+import { createClient } from '@supabase/supabase-js';
 
+// Hentar miljøvariablane
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+// Opprettar supabase-klienten
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Funksjon for å opprette eit nytt arrangement
 export async function createEvent(eventData: {
   owner_id: string;
   title: string;
