@@ -12,7 +12,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",                        // 👈 viktig for å støtte alias
+    "paths": {
+      "@/*": ["./*"]                       // 👈 gir støtte for @/lib osv.
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
