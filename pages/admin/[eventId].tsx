@@ -7,7 +7,6 @@ import { supabase } from '@/lib/supabase';
 export default function AdminSubmissionsPage() {
   const router = useRouter();
   const { eventId } = router.query;
-  const supabase = createClient();
 
   const [submissions, setSubmissions] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
