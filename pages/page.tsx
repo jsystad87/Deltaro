@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { createClient } from '@/lib/supabase';
+import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 
 type Event = {
@@ -18,29 +18,28 @@ export default function HomePage() {
   const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      const supabase = createClient();
+useEffect(() => {
+  const fetchEvents = async () => {
+    const today = new Date().toISOString().split('T')[0];
 
-      const today = new Date().toISOString().split('T')[0];
+    const { data, error } = await supabase
+      .from('events')
+      .select('*')
+      .gte('registration_end', today)
+      .order('start_date', { ascending: true });
 
-      const { data, error } = await supabase
-        .from('events')
-        .select('*')
-        .gte('registration_end', today)
-        .order('start_date', { ascending: true });
+    if (error) {
+      console.error('Feil ved henting av arrangement:', error.message);
+    } else {
+      setEvents(data || []);
+    }
 
-      if (error) {
-        console.error('Feil ved henting av arrangement:', error.message);
-      } else {
-        setEvents(data || []);
-      }
+    setLoading(false);
+  };
 
-      setLoading(false);
-    };
+  fetchEvents();
+}, []);
 
-    fetchEvents();
-  }, []);
 
   return (
     <main className="p-6">
