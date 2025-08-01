@@ -1,9 +1,10 @@
-// pages/opprett.tsx
-export default function Opprett() {
+import OpprettSkjema from '../Components/OpprettSkjema';
+
+export default function OpprettSide() {
   return (
-    <div>
-      <h1>Opprett arrangement</h1>
-      <p>Denne sida lasta inn riktig 🎉</p>
-    </div>
+    <main className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Opprett nytt arrangement</h1>
+      <OpprettSkjema />
+    </main>
   );
 }
